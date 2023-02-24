@@ -11,4 +11,4 @@ puts 'Выберите вариант:'
 puts menu.to_s
 
 input = gets.chomp
-puts menu.value_by_input(input)
+puts menu.value_by_input(input) || 'Неправильный ввод.'

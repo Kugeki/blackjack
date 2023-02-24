@@ -20,7 +20,7 @@ class Menu
   end
 
   def value_by_input(input)
-    @choices.find { |x| x.text == input }.value
+    @choices.find { |x| x.text == input }&.value
   end
 
   def to_s
