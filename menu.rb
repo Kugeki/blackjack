@@ -11,21 +11,25 @@ class Menu
     @choices.push(choice)
   end
 
-  def select_choices(&block)
-    @choices.select(&block)
+  def choice_by_value(choice_value)
+    @choices.find { |x| x.value == choice_value }
   end
 
-  def select_choices!(&block)
-    @choices = select_choices(&block)
+  def hide_choice(choice_value)
+    choice_by_value(choice_value).active = false
+  end
+
+  def show_choice(choice_value)
+    choice_by_value(choice_value).active = true
   end
 
   def value_by_input(input)
-    @choices.find { |x| x.text == input }&.value
+    @choices.find { |x| x.text == input && x.active? }&.value
   end
 
   def to_s
     @choices.each_with_object(String.new) do |choice, s|
-      s << "(#{choice.text}) #{choice.description}.\n"
+      s << "(#{choice.text}) #{choice.description}.\n" if choice.active?
     end
   end
 end

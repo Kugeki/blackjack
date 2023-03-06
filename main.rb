@@ -6,6 +6,7 @@ menu = Menu.new
 menu.add_choice(Choice.new('1', 'Пропустить', :skip))
 menu.add_choice(Choice.new('2', 'Добавить карту', :add_card))
 menu.add_choice(Choice.new('3', 'Открыть карты', :open_cards))
+menu.hide_choice(:add_card)
 
 puts 'Выберите вариант:'
 puts menu.to_s
