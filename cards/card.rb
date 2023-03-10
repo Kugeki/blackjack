@@ -22,4 +22,8 @@ class Card
 
     [10]
   end
+
+  def first_value
+    values.first
+  end
 end
