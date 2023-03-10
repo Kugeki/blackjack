@@ -12,7 +12,7 @@ class CardsGenerator
   end
 
   def names
-    types.map { |name| suits.map { |suit| name + suit } }.flatten
+    types.flat_map { |name| suits.map { |suit| name + suit } }
   end
 
   def generate

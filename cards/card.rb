@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Card
-  attr_accessor :name, :value
+  attr_accessor :name, :values
 
   def initialize(name)
     @name = name
-    @value = name_to_value(name)
+    @values = name_to_value(name)
   end
 
   def ace?
