@@ -34,6 +34,8 @@ class Cards < Array
 
     if aces_values.length.zero?
       sum
+    elsif aces_values.length == 1
+      points_one_ace(aces_values.first, sum)
     else
       points_multiple_aces(aces_values, sum)
     end
@@ -41,7 +43,10 @@ class Cards < Array
 
   def best_points(points_array)
     more, less = points_array.partition { |points| points > win_points }
-    [more.min, less.max].min
+  end
+
+  def points_one_ace(ace_values, sum)
+    best_points(ace_values.map { |value| value + sum })
   end
 
   def points_multiple_aces(aces_values, sum)
