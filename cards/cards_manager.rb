@@ -6,7 +6,6 @@ class CardsManager
   def initialize(generator = nil)
     @generator = generator || CardsGenerator.new
     @pool = []
-    generate_pool!
   end
 
   def generate_pool!
