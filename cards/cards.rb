@@ -43,6 +43,7 @@ class Cards < Array
 
   def best_points(points_array)
     more, less = points_array.partition { |points| points > win_points }
+    [more.min, less.max].compact.min
   end
 
   def points_one_ace(ace_values, sum)
