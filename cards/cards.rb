@@ -11,7 +11,6 @@ class Cards < Array
 
     best = best_points([self_points, other_points])
 
-    return -1 if best == other_points
     return 0 if self_points == other_points
     return -1 if best == other_points
     return 1 if best == self_points
