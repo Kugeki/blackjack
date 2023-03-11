@@ -22,7 +22,8 @@ class Dealer
   end
 
   def add_card(card)
+    raise 'У диллера не может быть больше 3 карт' if cards.length > 2
+
     cards.push(card)
-    raise 'У диллера не может быть больше 3 карт' if cards.length > 3
   end
 end
