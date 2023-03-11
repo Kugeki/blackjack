@@ -20,15 +20,18 @@ menu.add_choice(Choice.new('1', 'Пропустить', :skip))
 menu.add_choice(Choice.new('2', 'Добавить карту', :add_card))
 menu.add_choice(Choice.new('3', 'Открыть карты', :open_cards))
 
-game = Game.new(User.new(menu, user_input), Dealer.new)
+game = Game.new(User.new, Dealer.new)
 
 loop do
   bank_manager.make_bet(10)
+  menu.show_all!
 
   game.start
   game_ended = false
   until game_ended
-    GameUi.draw_tick(game)
+    menu.hide_choice!(:add_card) if game.user.cards.length > 2
+    GameUi.draw_tick(game, menu)
+
     user_choice = user_input.choice_from_menu(menu)
     tick_result = game.tick(user_choice)
     game_ended = tick_result == :end

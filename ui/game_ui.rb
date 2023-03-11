@@ -12,11 +12,11 @@ end
 
 class GameUi
   class << self
-    def draw_tick(game)
+    def draw_tick(game, menu)
       clear
       draw_dealer(game.dealer)
       draw_user(game.user)
-      draw_menu(game.user.menu)
+      draw_menu(menu)
     end
 
     def draw_dealer(dealer, hidden: true)
