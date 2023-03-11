@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'menu/menu'
 require_relative 'menu/choice'
 
