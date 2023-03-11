@@ -28,7 +28,17 @@ class Cards < Array
     21
   end
 
+  def push(card)
+    @points = nil
+    super
+  end
+
   def points
+    @points = points! if @points.nil?
+    @points
+  end
+
+  def points!
     aces_values = aces.map(&:values)
     sum = others.map(&:first_value).sum
 
