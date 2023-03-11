@@ -23,6 +23,7 @@ class Game
     manager.generate_pool! if manager.count < 6
 
     @game_end = false
+    @result = nil
   end
 
   def start
