@@ -26,9 +26,12 @@ loop do
   bank_manager.make_bet(10)
 
   game.start
-  until game.ended?
+  game_ended = false
+  until game_ended
     GameUi.draw_tick(game)
-    game.tick(user_input.choice_from_menu(menu))
+    user_choice = user_input.choice_from_menu(menu)
+    tick_result = game.tick(user_choice)
+    game_ended = tick_result == :end
   end
 
   GameUi.draw_game_result(game, bank_manager.main_bank.amount)

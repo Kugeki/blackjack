@@ -22,7 +22,6 @@ class Game
     dealer.reset!
     manager.generate_pool! if manager.count < 6
 
-    @game_end = false
     @result = nil
   end
 
@@ -34,9 +33,11 @@ class Game
   def tick(user_choice)
     user.choice = user_choice
 
-    process user
-    process dealer unless ended?
-    @game_end = true if user.cards.length == 3 && dealer.cards.length == 3
+    return :end if process(user) == :end
+    return :end if process(dealer) == :end
+    return :end if user.cards.length == 3 && dealer.cards.length == 3
+
+    :continue
   end
 
   def result
@@ -61,12 +62,10 @@ class Game
 
   def process(player)
     case player.choice
-    when :add_card then player.add_card(manager.give_card)
-    when :open_cards then @game_end = true
+    when :add_card
+      player.add_card(manager.give_card)
+      :continue
+    when :open_cards then :end
     end
-  end
-
-  def ended?
-    @game_end
   end
 end
