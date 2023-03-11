@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 require_relative '../cards/cards'
+require_relative '../user_input'
 
 class User
   attr_accessor :menu, :cards
 
-  def initialize(menu)
+  def initialize(menu, input)
     @menu = menu
     @cards = Cards.new
+    @input = input
   end
 
   def reset!
@@ -16,12 +18,7 @@ class User
   end
 
   def choice
-    loop do
-      input = gets.chomp
-      choice = menu.value_by_input(input)
-
-      return choice unless choice.nil?
-    end
+    @input.choice_from_menu(menu)
   end
 
   def add_card(card)
