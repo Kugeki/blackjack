@@ -31,7 +31,9 @@ class Game
     give_cards
   end
 
-  def tick
+  def tick(user_choice)
+    user.choice = user_choice
+
     process user
     process dealer unless ended?
     @game_end = true if user.cards.length == 3 && dealer.cards.length == 3

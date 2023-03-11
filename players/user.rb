@@ -4,7 +4,7 @@ require_relative '../cards/cards'
 require_relative '../user_input'
 
 class User
-  attr_accessor :menu, :cards
+  attr_accessor :menu, :cards, :choice
 
   def initialize(menu, input)
     @menu = menu
@@ -15,10 +15,6 @@ class User
   def reset!
     menu.show_all!
     self.cards = Cards.new
-  end
-
-  def choice
-    @input.choice_from_menu(menu)
   end
 
   def add_card(card)

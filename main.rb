@@ -28,7 +28,7 @@ loop do
   game.start
   until game.ended?
     GameUi.draw_tick(game)
-    game.tick
+    game.tick(user_input.choice_from_menu(menu))
   end
 
   GameUi.draw_game_result(game, bank_manager.main_bank.amount)
