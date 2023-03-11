@@ -55,20 +55,21 @@ class GameUi
       draw_dealer(game.dealer, hidden: false)
       draw_empty_line
 
-      case game.result
-      when :win then puts 'Вы выиграли!'
-      when :draw then puts 'Ничья!'
-      when :lose then puts 'Вы проиграли'
-      end
       draw_bank_result(game, bet)
       draw_empty_line
     end
 
     def draw_bank_result(game, bet)
       case game.result
-      when :win then puts "Получено денег: #{bet}"
-      when :draw then puts 'Деньги вернулись игрокам'
-      when :lose then puts "Потеряно денег: #{bet}"
+      when :win
+        puts 'Вы выиграли!'
+        puts "Получено денег: #{bet}"
+      when :draw
+        puts 'Ничья!'
+        puts 'Деньги вернулись игрокам'
+      when :lose
+        puts 'Вы проиграли'
+        puts "Потеряно денег: #{bet}"
       end
     end
 
