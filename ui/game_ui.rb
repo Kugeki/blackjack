@@ -20,27 +20,19 @@ class GameUi
     end
 
     def draw_dealer(dealer, hidden: true)
-      draw_dealer_cards(dealer.cards, hidden:)
-    end
-
-    def draw_dealer_cards(cards, hidden: true)
       if hidden
-        puts "Карты диллера: #{'* ' * cards.length}"
+        puts "Карты диллера: #{'* ' * dealer.cards.length}"
       else
         puts 'Карты диллера:'
-        puts cards
-        puts "Cумма очков диллера: #{cards.points}"
+        puts dealer.cards
+        puts "Cумма очков диллера: #{dealer.cards.points}"
       end
     end
 
     def draw_user(user)
-      draw_user_cards(user.cards)
-    end
-
-    def draw_user_cards(cards)
       puts 'Ваши карты:'
-      puts cards
-      puts "Ваша сумма очков: #{cards.points}"
+      puts user.cards
+      puts "Ваша сумма очков: #{user.cards.points}"
       puts
     end
 
