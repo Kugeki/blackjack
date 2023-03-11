@@ -14,4 +14,12 @@ class Choice
   def active?
     active
   end
+
+  def activate
+    self.active = true
+  end
+
+  def deactivate
+    self.active = false
+  end
 end

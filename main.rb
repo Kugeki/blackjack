@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'menu'
+require_relative 'menu/menu'
 
 menu = Menu.new
 menu.add_choice(Choice.new('1', 'Пропустить', :skip))

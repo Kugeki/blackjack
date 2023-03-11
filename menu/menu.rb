@@ -15,12 +15,16 @@ class Menu
     @choices.find { |x| x.value == choice_value }
   end
 
-  def hide_choice(choice_value)
-    choice_by_value(choice_value).active = false
+  def hide_choice!(choice_value)
+    choice_by_value(choice_value).deactivate
   end
 
-  def show_choice(choice_value)
-    choice_by_value(choice_value).active = true
+  def show_choice!(choice_value)
+    choice_by_value(choice_value).activate
+  end
+
+  def show_all!
+    @choices.each(&:activate)
   end
 
   def value_by_input(input)
