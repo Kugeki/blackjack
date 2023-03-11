@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'ui/game_ui'
 require_relative 'game'
 require_relative 'menu/menu'
 
@@ -12,5 +13,8 @@ game = Game.new(User.new(menu), Dealer.new)
 
 game.start
 until game.ended?
+  GameUi.draw_tick(game)
   game.tick
 end
+
+GameUi.draw_game_result(game)
